@@ -1,0 +1,10 @@
+<h1> List of all Users </h1>
+
+<% if @users.length != 0 %>
+    <% @users.each { |user| %>
+        <%= user.name %>
+    <% } %>
+<% else %>
+    <%= 'Sorry, no users here' %>
+    <%= link_to "Create", 'users/new'%>
+<% end %>
