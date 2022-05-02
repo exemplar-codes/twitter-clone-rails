@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.5"
+ruby "3.0.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.4"
@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.4"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -51,6 +51,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
@@ -61,7 +63,13 @@ group :development do
   # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "spring"
+
+   # Ruby formatter and linter
+  gem 'rubocop', '~> 1.28.2'
+  gem 'rubocop-performance', '~> 1.13.3'
+  gem 'rubocop-rails', '~> 2.14.2'
+  gem 'rubocop-rspec', '~> 2.10.0'
 end
 
 group :test do
@@ -69,4 +77,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+
+group :production do
+  gem 'pg', '1.1.4'
 end
